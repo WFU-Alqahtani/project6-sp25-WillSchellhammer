@@ -30,6 +30,29 @@ public class lab6 {
         deck.print();
         deck.sanity_check(); // because we can all use one
 
+        /*
+        //tests
+        deck.remove_from_tail();
+        deck.sanity_check();
+
+        deck.remove_from_head();
+        deck.sanity_check();
+
+        deck.add_at_head(new Card(Card.suites.SPADES, Card.ranks.king));
+        deck.sanity_check();
+
+        deck.add_at_tail(new Card(Card.suites.SPADES, Card.ranks.king));
+        deck.sanity_check();
+
+        deck.insert_at_index(new Card(Card.suites.SPADES, Card.ranks.king), 5);
+        deck.sanity_check();
+
+        deck.remove_from_index(5);
+        deck.sanity_check();
+
+        deck.swap(5,6);
+        deck.sanity_check(); */
+
         // shuffle the deck (random order)
         deck.shuffle(512);
         deck.print();
