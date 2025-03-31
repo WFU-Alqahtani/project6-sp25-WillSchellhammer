@@ -28,4 +28,12 @@ public class Card {
         System.out.print(suit + ": " + rank);
     }
 
+    // Getters
+    public suites getSuit() {
+        return suit;
+    }
+
+    public ranks getRank() {
+        return rank;
+    }
 }

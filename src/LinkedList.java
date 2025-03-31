@@ -5,7 +5,7 @@ public class LinkedList {
 
     public Node head;
     public Node tail;
-    public int size = 0;
+    public int size;
 
     LinkedList(){
         head = null;
@@ -22,7 +22,7 @@ public class LinkedList {
             int r2 = rand.nextInt(52);
 
             swap(r1,r2); // swap nodes at these indices
-            sanity_check(); //debug
+            if (lab6.DEBUG) sanity_check(); //debug
         }
     }
 
@@ -106,7 +106,7 @@ public class LinkedList {
                 insert_at_index(b, index1);
             }
             else {
-                System.out.println("Indexes of swap are equal. Aborting swap operation.");
+                if (lab6.DEBUG) System.out.println("Indexes of swap are equal. Aborting swap operation.");
             }
         }
     }
@@ -152,7 +152,8 @@ public class LinkedList {
         else {
             Node h = head; //shallow copy
             head = h.next; //head points to next node
-            head.prev = null; //remove pointer to h
+            if (head != null)
+                head.prev = null; //remove pointer to h
             size--;
             return h.data; //return card at h, h is deleted from memory since there's no pointers to it
         }
@@ -167,10 +168,15 @@ public class LinkedList {
         else {
             Node t = tail; //shallow copy
             tail = t.prev; //head points to previous node
-            tail.next = null; //remove pointer to t
+            if (tail != null)
+                tail.next = null; //remove pointer to t
             size--;
             return t.data; //return card at t, t is deleted from memory since there's no pointers to it
         }
+    }
+
+    public boolean isEmpty() {
+        return head == null;
     }
 
     // check to make sure the linked list is implemented correctly by iterating forwards and backwards
@@ -197,7 +203,7 @@ public class LinkedList {
 
         // check that forward count, backward count, and internal size of the list match
         if (count_backward == count_forward && count_backward == size) {
-            System.out.println("Basic sanity Checks passed");
+            if (lab6.DEBUG) System.out.println("Basic sanity Checks passed");
         }
         else {
             // there was an error, here are the stats
